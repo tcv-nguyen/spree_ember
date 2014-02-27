@@ -1,0 +1,13 @@
+<script type="text/x-handlebars">
+  <h2>Products</h2>
+
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="products">
+  <ul>
+  {{#each item in model}}
+    <li>{{item.name}}</li>
+  {{/each}}
+  </ul>
+</script>
