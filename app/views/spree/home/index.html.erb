@@ -1,13 +1,30 @@
 <script type="text/x-handlebars">
-  <h2>Products</h2>
-
   {{outlet}}
 </script>
 
 <script type="text/x-handlebars" id="products">
-  <ul>
-  {{#each item in model}}
-    <li>{{item.name}}</li>
-  {{/each}}
-  </ul>
+  <div id="products" class="row" data-hook>
+    {{#each}}
+      <div id="product_{{id}}" class="col-md-3 col-sm-6" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+        <div class="panel panel-default">
+          <div class="panel-body text-center product-body">
+            {{#link-to 'product' this}}
+              <img src='{{unbound master.images.firstObject.urls.small}}' /><br />
+              {{name}}
+            {{/link-to}}
+          </div>
+          <div class="panel-footer text-center">
+            <span class="price selling lead" itemprop="price">{{ display_price }}</span>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</script>
+
+
+
+<script type="text/x-handlebars" id="product">
+  {{#link-to 'products'}}Products{{/link-to}}
+  Showing a name: {{name}}
 </script>
