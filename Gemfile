@@ -12,3 +12,5 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+gem 'ember-rails', github: 'emberjs/ember-rails'
