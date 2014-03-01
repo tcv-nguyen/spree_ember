@@ -1,0 +1,19 @@
+<div id="spree-header">
+
+  <header id="header" data-hook>
+    <div class="container">
+      <figure id="logo" class="col-md-4" data-hook>
+        <%= logo %>
+      </figure>
+      <script type='text/x-handlebars' id='nav_bar'>
+        {{outlet nav_bar}}
+      </script>
+    </div>
+  </header>
+  <div class="container">
+    <script type='text/x-handlebars' id='main_nav_bar'>
+      {{outlet main_nav_bar}}
+    </script>
+  </div>
+
+</div>

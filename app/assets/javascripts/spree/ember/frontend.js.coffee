@@ -7,7 +7,8 @@ Spree.App = Ember.Application.create(
   LOG_VIEW_LOOKUPS: true,
   LOG_TRANSITIONS: true, 
   LOG_TRANSITIONS_INTERNAL: true,
-  LOG_ACTIVE_GENERATION: true
+  LOG_ACTIVE_GENERATION: true,
+  rootElement: "#rootElement"
 
   )
 
@@ -32,12 +33,29 @@ Spree.App.Product.reopenClass
       Spree.App.Product.create(response.product)
     )
 
+Spree.App.TaxonomiesRoute = Ember.Route.extend
+  model: ->
+    return Spree.App.Taxonomy.findAll()
+
 Spree.App.ProductsRoute = Ember.Route.extend
   model: ->
     return Spree.App.Product.findAll()
+  renderTemplate: ->
+    @render 'products', outlet: 'content'
+    @render 'taxonomies', outlet: 'sidebar'
+
+Spree.App.ProductsView = Ember.View.extend
+  didInsertElement: ->
+    $('#content').attr('class', 'col-sm-8 col-md-9')
+    $('#sidebar').show()
 
 Spree.App.ProductRoute = Ember.Route.extend
   model: (params) ->
     return Spree.App.Product.find(params.slug)
-
+  renderTemplate: ->
+    @render 'product', outlet: 'content'
     
+Spree.App.ProductView = Ember.View.extend
+  didInsertElement: ->
+    $('#sidebar').hide()
+    $('#content').attr('class', 'col-sm-12')

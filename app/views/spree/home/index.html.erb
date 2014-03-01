@@ -1,11 +1,7 @@
-<script type="text/x-handlebars">
-  {{outlet}}
-</script>
-
 <script type="text/x-handlebars" id="products">
   <div id="products" class="row" data-hook>
     {{#each}}
-      <div id="product_{{id}}" class="col-md-3 col-sm-6" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+      <div id="product_{{unbound id}}" class="col-md-3 col-sm-6" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
         <div class="panel panel-default">
           <div class="panel-body text-center product-body">
             {{#link-to 'product' this}}
@@ -22,9 +18,13 @@
   </div>
 </script>
 
-
+<script type='text/x-handlebars' id='taxonomies'>
+Taxonomies go here
+</script>
 
 <script type="text/x-handlebars" id="product">
-  {{#link-to 'products'}}Products{{/link-to}}
-  Showing a name: {{name}}
+  <div id="content" class="col-sm-12" data-hook>
+    {{#link-to 'products'}}Products{{/link-to}}
+    Showing a name: {{name}}
+  </div>
 </script>

@@ -1,3 +1,6 @@
+require 'rails/all'
+require 'rails/engine'
+
 module Spree
   module Ember
     module Frontend
