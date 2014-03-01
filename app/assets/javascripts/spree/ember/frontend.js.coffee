@@ -33,16 +33,33 @@ Spree.App.Product.reopenClass
       Spree.App.Product.create(response.product)
     )
 
-Spree.App.TaxonomiesRoute = Ember.Route.extend
-  model: ->
-    return Spree.App.Taxonomy.findAll()
+Spree.App.Taxonomy = Ember.Object.extend({});
+Spree.App.Taxonomy.reopenClass
+  findAll: ->
+    $.getJSON("/api/taxonomies.json").then((response) ->
+      response.taxonomies.map((taxonomy) ->
+        Spree.App.Taxonomy.create(taxonomy);
+      )
+    )
+
+Spree.App.TaxonomiesController = Ember.ArrayController.extend({})
 
 Spree.App.ProductsRoute = Ember.Route.extend
   model: ->
-    return Spree.App.Product.findAll()
+    promise = Ember.RSVP.hash
+      products: Spree.App.Product.findAll()
+      taxonomies: Spree.App.Taxonomy.findAll()
+    promise.then((results) =>
+      @controllerFor('taxonomies').set('model', results.taxonomies)
+      return results.products)
+
   renderTemplate: ->
+    @render
+      controller: 'taxonomies',
+      outlet: 'sidebar'
+      into: 'taxonomies'
+
     @render 'products', outlet: 'content'
-    @render 'taxonomies', outlet: 'sidebar'
 
 Spree.App.ProductsView = Ember.View.extend
   didInsertElement: ->
