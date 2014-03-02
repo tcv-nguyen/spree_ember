@@ -6,15 +6,15 @@ Teaspoon.setup do |config|
 
   # This defaults to Rails.root if left nil. If you're testing an engine using a dummy application it can be useful to
   # set this to your engines root.. E.g. `Teaspoon::Engine.root`
-  config.root = nil
+  config.root = Rails.root + "../../"
 
   # These paths are appended to the Rails assets paths (relative to config.root), and by default is an array that you
   # can replace or add to.
-  config.asset_paths = [Rails.root + "../../test/javascripts", Rails.root + "../../test/javascripts/stylesheets"]
+  config.asset_paths = [Rails.root + "../javascripts", Rails.root + "../javascripts/stylesheets"]
 
   # Fixtures are rendered through a standard controller. This means you can use things like HAML or RABL/JBuilder, etc.
   # to generate fixtures within this path.
-  config.fixture_path = "test/javascripts/fixtures"
+  config.fixture_path = "spec/javascripts/fixtures"
 
   # You can modify the default suite configuration and create new suites here. Suites can be isolated from one another.
   # When defining a suite you can provide a name and a block. If the name is left blank, :default is assumed. You can
@@ -29,7 +29,7 @@ Teaspoon.setup do |config|
     # these files are serve-able from sprockets.
     #
     # Note: Can also be set to nil.
-    suite.matcher = "{test/javascripts,app/assets}/**/*_test.{js,js.coffee,coffee}"
+    suite.matcher = "{spec/javascripts,app/assets}/**/*_test.{js,js.coffee,coffee}"
 
     # Each suite can load a different helper, which can in turn require additional files. This file is loaded before
     # your tests are loaded, and can be used as a manifest.

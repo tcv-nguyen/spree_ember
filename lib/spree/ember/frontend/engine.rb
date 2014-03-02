@@ -1,6 +1,7 @@
 require 'rails/all'
 require 'rails/engine'
 require 'ember-rails'
+require 'jquery-rails'
 
 module Spree
   module Ember
