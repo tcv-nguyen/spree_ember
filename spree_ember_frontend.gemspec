@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'thin'
   s.add_development_dependency 'teaspoon'
+  s.add_development_dependency 'pry'
 end
