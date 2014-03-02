@@ -1,0 +1,46 @@
+<div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
+  <div class="col-md-4" data-hook="product_left_part">
+    <div data-hook="product_left_part_wrap">
+
+      <div id="product-images" data-hook="product_images">
+        <div id="main-image" class="panel panel-default" data-hook>
+          <div class="panel-body text-center">
+            <img src='{{unbound master.images.firstObject.urls.product}}'>
+          </div>
+        </div>
+        <div id="thumbnails" data-hook>
+          Thumbnails go here
+        </div>
+        <div data-hook="product-properties">
+          {{#if properties}}
+            <h3 class="product-section-title">Properties</h6>
+            <table id="product-properties" class="table table-striped" data-hook>
+              <tbody>
+                {{#each property in properties}}
+                  <tr>
+                    <td><strong>{{unbound property.property_name }}</strong></td>
+                    <td>{{ unbound property.value }}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8" data-hook="product_right_part">
+    <div id="product-description" data-hook="product_description">
+
+      <h1 class="product-title" itemprop="name">{{name}}</h1>
+
+      <div class="well" itemprop="description" data-hook="description">
+        {{description}}
+      </div>
+
+      <div id="cart-form" data-hook="cart_form">
+        cart form here
+      </div>
+    </div>
+  </div>
+</div>
