@@ -16,9 +16,15 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
+  s.add_dependency 'spree_core', '2.2.0'
+  s.add_dependency 'spree_api', '2.2.0'
   s.add_dependency "rails", "~> 4.0.3"
   s.add_dependency 'bootstrap-sass', '~> 3.1.0'
   s.add_dependency "ember-source", "1.4.0"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "qunit-rails"
+  s.add_development_dependency 'sass-rails'
+  s.add_development_dependency 'coffee-rails'
+  s.add_development_dependency 'thin'
 end
